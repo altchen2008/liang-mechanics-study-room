@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#163c34"><title>力学研习室 · 达朗贝尔原理与拉格朗日动力学</title><style>
+*{box-sizing:border-box} :root{--paper:#f7f8f3;--white:#fff;--ink:#142d26;--muted:#536c60;--line:#dce2d9;--green:#235c48;--accent:#ca9750;color-scheme:light}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 "Instrument Sans","Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif}button,input{font:inherit}button,a,input{touch-action:manipulation}button{cursor:pointer;color:inherit}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #c68728;outline-offset:3px}button{border:0;background:none}a{color:inherit;text-decoration:none}.ic{width:18px;height:18px;flex:none;vertical-align:-3px}header{background:#fff;border-bottom:1px solid var(--line)}.headerin,main{width:min(1272px,calc(100% - 80px));margin:auto}.headerin{display:flex;align-items:center;height:70px;gap:18px}#brand{display:inline-flex;align-items:center;gap:11px;font-size:21px;letter-spacing:1px;font-weight:750}.mark{height:36px;width:36px;display:grid;place-items:center;background:#204b3e;color:#f6f7e9;border-radius:9px}.mark svg{width:29px}.headDivider{height:19px;width:1px;background:var(--line)}.headerBook{color:var(--muted);font-size:14px;letter-spacing:1px}nav{margin-left:auto;display:flex;gap:10px}.navItem{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:6px;color:#617367;font-size:14px}.navItem.current{background:#edf2eb;color:#245b46;font-weight:650}.navItem:hover,.textBtn:hover{background:#e8efe7}.navItem b{background:#f0debb;padding:0 6px;border-radius:5px;font-size:12px}.chapter{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:34px 0 28px}.eyebrow,.unitLine,.row,.asideHead,.boardTitle,.prompt>span,h3 .ic,.textBtn{display:flex;align-items:center}.eyebrow{gap:10px;font-size:13px;font-weight:680;letter-spacing:1.5px;color:#576f60}.goldrule{width:24px;height:2px;background:var(--accent)}.sep{color:#a9b2a8}.chapter h1,.lessonHead h2,.errorSheet h2{font-family:"Noto Serif CJK SC","Songti SC",SimSun,Georgia,serif}.chapter h1{font-size:clamp(36px,4.3vw,58px);line-height:1.25;letter-spacing:1px;margin:8px 0}.chapter p,.lessonHead p,.errorSheet>p{margin:0;color:var(--muted)}.chapter p{font-size:14px}.bookpage{margin-left:8px;padding-left:14px;border-left:1px solid #c6d0c4}.progressCard{width:235px;flex-shrink:0;border-left:2px solid #bccdbf;padding:0 0 0 20px;color:var(--muted)}.progressCard>div:first-child{display:flex;align-items:baseline;justify-content:space-between;font-size:14px}.progressCard strong{font:600 23px Georgia,serif;color:var(--green)}.track{height:5px;background:#dbe5da;margin:8px 0 4px;border-radius:4px;overflow:hidden}.track i{height:100%;display:block;background:#39775d}.progressCard small,.pg{font-size:13px}.workspace{display:grid;grid-template-columns:260px minmax(0,1fr);align-items:start;gap:22px}aside,.sheet{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 3px 14px #22362805}aside{overflow:hidden;padding-bottom:16px}.asideHead{gap:10px;padding:17px 18px;border-bottom:1px solid var(--line);background:#fdfefb}.asideHead .ic{color:var(--green)}.asideHead>span{margin-left:auto;color:#536b5c;font-size:13px}.groupTitle{font-size:13px;font-weight:700;line-height:1.45;color:#4b6054;margin:18px 13px 7px 16px;display:flex;gap:6px}.groupTitle b,.lesson small,.unitLine>span:first-child{font-family:Georgia,serif}.groupTitle b{white-space:nowrap}.lesson{width:calc(100% - 16px);margin:1px 8px;padding:7px 8px;display:flex;gap:8px;align-items:baseline;text-align:left;border-radius:5px;color:#405b4d;font-size:14px;line-height:1.6}.lesson small{font-size:13px;color:#617c6b;margin-right:2px;font-variant-numeric:tabular-nums}.lesson>span{width:10px;flex:none;align-self:center;display:grid;place-items:center}.lesson>span i{width:5px;height:5px;border-radius:50%;background:#cdd7ce}.lesson .ic{width:12px;height:12px}.lesson:hover{background:#f0f5ef}.lesson.sel{background:#e3efe5;color:#1f513e;font-weight:700}.lesson.sel i{background:#397555}.lesson.sel small{color:#2c674d}#toggleNav{display:none}#content{min-width:0;scroll-margin-top:10px}.sheet{overflow:hidden}.lessonHead{padding:22px 26px 17px}.unitLine{gap:12px}.unitLine>span:first-child{background:#edf2e9;color:#3c684e;font-size:14px;font-weight:bold;padding:1px 9px;border-radius:4px;letter-spacing:.6px}.pg{display:flex;align-items:center;gap:5px;color:#617567}.pg .ic{width:14px;height:14px}.lessonHead h2,.errorSheet h2{font-size:clamp(24px,2.6vw,34px);line-height:1.4;margin:9px 0 5px}.lessonHead p{font-size:15px}.tabs{border-bottom:1px solid var(--line);display:flex;gap:16px;padding:0 24px}.tabs button{display:flex;align-items:center;gap:7px;padding:9px 8px 11px;position:relative;color:#647568;font-size:15px}.tabs button.active{color:#255f46;font-weight:700}.tabs button.active:after{content:'';position:absolute;background:#377751;height:3px;bottom:-1px;left:0;right:0;border-radius:3px}.tabs button:hover{color:var(--green)}#pane{padding:20px 24px 23px}.board{position:relative;isolation:isolate;background-color:#133d33;background-image:linear-gradient(#b3dfbe0d 1px,transparent 1px),linear-gradient(90deg,#b3dfbe0d 1px,transparent 1px),radial-gradient(ellipse at 65% 35%,#285948 0%,#153b32 78%);background-size:23px 23px,23px 23px,100% 100%;border:1px solid #163d31;border-radius:9px;color:#e9f4e9;overflow:hidden}.board:before,.board:after{content:'+';position:absolute;right:14px;font:16px monospace;color:#8baa95}.board:before{top:12px}.board:after{bottom:12px}.boardTitle{gap:8px;font-weight:600;letter-spacing:.3px;font-size:16px;margin:13px 18px 0}.cross{font:17px monospace;color:#e1bc77}.board canvas{display:block;width:100%;height:clamp(178px,18vw,235px)}.boardFoot{font-size:12px;letter-spacing:.4px;color:#ccdacf;margin:0 17px 12px}.controls{margin:13px 0;border:1px solid var(--line);background:#fbfcf8;border-radius:8px;padding:12px 15px}.row{justify-content:space-between;gap:10px}.row h3,.prompt>span{display:flex;align-items:center;gap:8px}h3{font-size:16px;margin:0}.textBtn{gap:5px;color:#5a7061;font-size:14px;border-radius:4px;padding:3px 7px}.textBtn .ic{height:14px;width:14px}.sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px 28px;margin:10px 0 9px}.sliders label>span{display:flex;justify-content:space-between;align-items:center;font-size:14px}.sliders output{font:600 14px ui-monospace,monospace;color:#285d45}.sliders input{display:block;appearance:none;width:100%;height:5px;margin:13px 0 11px;border-radius:10px;background:linear-gradient(to right,#54866a var(--fill),#d8e3d7 var(--fill));cursor:pointer}.sliders input::-webkit-slider-thumb{appearance:none;width:15px;height:15px;border-radius:50%;background:#367253;border:2px solid white;box-shadow:0 0 0 1px #477957}.sliders input::-moz-range-thumb{border-radius:50%;background:#367253;border:2px solid white}.results{display:flex;flex-wrap:wrap;gap:7px 22px;border-top:1px solid var(--line);padding-top:9px}.results>div{display:flex;align-items:baseline;gap:8px}.results span,.results small{color:#536d5c;font-size:13px}.results strong{color:#2c5b44;font-size:15px;font-variant-numeric:tabular-nums}.results small{font-weight:400}.prompt{padding:12px 15px;background:#f7f1e4;border-left:3px solid #ca9651;border-radius:3px 7px 7px 3px;color:#5d4b2e}.prompt>span{font-size:14px;font-weight:700}.prompt p,.feedback p,.empty p,.step p,.errorItem p{margin:5px 0}.prompt p{font-size:15px}.paneTitle{margin:0 0 18px}.paneTitle span,.errorItem small,.empty p{color:var(--muted);font-size:14px}.step{display:grid;grid-template-columns:30px 1fr;gap:11px;margin:17px 0}.stepnum{background:#e9f0e7;color:#315f43;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif}.step p{color:#4c6154}.formula{margin:10px 0;background:#eff4ed;border-left:3px solid #81a78b;padding:11px 13px;font:18px/1.65 Georgia,"Noto Sans CJK SC",sans-serif;overflow-wrap:anywhere;color:#21533c}.actions,.qnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.primary,.secondary,.qnav button,#toggleNav{border-radius:6px;padding:8px 15px;font-size:14px;font-weight:650}.primary{color:#fff;background:#285c44}.primary:hover{background:#193f2e}.secondary,.qnav button,#toggleNav{background:white;border:1px solid #cedacd}.secondary:hover,.qnav button:hover{background:#edf4eb}.secondary:disabled{opacity:.45;cursor:default}.qnav button{font-size:13px}.qnav button.on{background:#e1eee3;border-color:#70937b}.qtags{display:flex;align-items:center;gap:10px;margin:23px 0 8px;font-size:13px;color:#617366}.qtags b{color:#77562e;background:#f7edda;border-radius:4px;padding:2px 6px}.question{font-size:19px;margin:0 0 14px}.choices{display:grid;gap:8px}.option{display:flex;align-items:center;gap:10px;padding:9px 11px;cursor:pointer;border:1px solid #d7e1d5;border-radius:6px}.option:hover,.option:has(:checked){border-color:#679173;background:#f1f6ef}.option input{accent-color:#32664a}.letter{font:600 15px Georgia,serif;color:#698471}.numLabel{display:grid;gap:7px;font-size:14px;color:var(--muted)}.numLabel input{border:1px solid #b9cabb;border-radius:6px;padding:8px 10px;max-width:280px;width:100%}.feedback{padding:14px 16px;margin:16px 0;border-radius:6px}.good{background:#e9f3e9;color:#245239}.bad{background:#fbefe2;color:#714720}.errorSheet{padding:24px}.empty{margin:20px 0;text-align:center;padding:30px;background:#f3f6ef;border-radius:8px}.empty>.ic{width:32px;height:32px;color:var(--green)}.empty button{margin-top:10px}.errorItem{border-top:1px solid var(--line);padding-top:17px;margin-top:20px}.errorItem h3{margin:5px 0}footer{padding:23px 0 30px;text-align:center;color:#69786b;font-size:12px}footer span{padding:0 6px}
+@media(min-width:1550px){.workspace{grid-template-columns:278px minmax(0,1fr)}}
+@media(max-width:1000px){.headerin,main{width:calc(100% - 40px)}.workspace{grid-template-columns:222px minmax(0,1fr);gap:14px}.lessonHead{padding:18px 18px 15px}.tabs{padding:0 17px;gap:10px}#pane{padding:15px}.sliders{gap:12px}}
+@media(max-width:800px){.workspace{display:block}.chapter{padding:24px 0 18px}.chapter h1{font-size:38px}.progressCard{width:147px}.bookpage{display:none}aside{padding:0;margin-bottom:12px}.asideHead{padding:10px 14px}.asideHead>span{margin-left:0}.asideHead #toggleNav{display:inline-block;margin-left:auto;padding:4px 11px}#sections{display:none}#sections.expanded{display:block;padding-bottom:12px}.board canvas{height:210px}}
+@media(max-width:540px){.headerin,main{width:calc(100% - 24px)}.headerin{height:58px;gap:8px}#brand{font-size:17px;gap:6px}.mark{width:31px;height:31px}.headerBook,.headDivider{display:none}nav{gap:2px}.navItem{font-size:13px;padding:7px;gap:4px}.navItem .ic{width:15px}.chapter{display:block}.chapter h1{font-size:34px}.chapter p{font-size:12px}.progressCard{width:100%;margin:13px 0 0;border:0;padding:0;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:10px}.progressCard>div:first-child{gap:8px;font-size:12px}.progressCard strong{font:600 15px Georgia,serif}.progressCard small{display:none}.track{margin:0}.lessonHead h2{font-size:25px}.lessonHead p{font-size:14px}.tabs{justify-content:space-between;padding:0 12px;gap:3px}.tabs button{padding:9px 4px;font-size:14px;gap:5px}#pane{padding:12px}.boardTitle{font-size:14px;margin:12px 12px 0}.boardFoot{font-size:12px;margin:0 12px 9px}.board canvas{height:180px}.sliders{grid-template-columns:1fr;gap:3px}.controls{padding:10px 12px}.results{gap:4px 12px}.results>div{gap:4px}.prompt p{font-size:14px}.qnav{gap:4px}.qnav button{padding:6px 8px}.question{font-size:17px}.board:after{display:none}}
+
+
+
+#chapter-switch{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1rem}
+#chapter-switch button[aria-pressed="true"]{background:#163c34;color:white;border-color:#163c34}
+.quiz-hint{margin:.6rem 0 1rem;color:#355a50}
+.quiz-hint summary{cursor:pointer;font-weight:600}
+.answer-note{margin:.5rem 0;color:#355a50;font-size:.9rem}
+</style></head>
+<body><header><div class="headerin"><a href="#" id="brand" aria-label="力学研习室首页"><span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m5 24 9-17 12 17M8 20h15M14 7l3 13" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="7" r="2" fill="#e5c98f"/><circle cx="25" cy="24" r="2" fill="#e5c98f"/></svg></span>力学研习室</a><span class="headDivider"></span><span class="headerBook">理论力学 · 下册</span><nav aria-label="主导航"><button id="desk" class="navItem"></button><button id="mistakes" class="navItem"></button></nav></div></header>
+<main><section class="chapter"><div><div class="eyebrow"><span class="goldrule"></span>分析力学<span class="sep">/</span><span id="chapter-name">第二章</span></div><h1 id="chapter-title">达朗贝尔原理</h1><p>梁昆淼、鞠国兴、施毅《力学》（第四版 · 下册）<span class="bookpage" id="chapter-pages">第 37–59 页</span></p></div><div class="progressCard"><div><span>本章练习进度</span><strong id="percent">0%</strong></div><div class="track"><i id="bar"></i></div><small id="count"></small></div></section>
+<nav id="chapter-switch" aria-label="切换教材章节"></nav><div class="workspace"><aside><div class="asideHead" id="asideHead"></div><div id="sections"></div></aside><div id="content"></div></div><footer>力学研习室 <span>·</span> 梁昆淼《力学》第二、三章配套自测</footer></main>
+<script>
+// Each lesson follows a leaf heading in chapter two. Exercises are original.
+window.lessons = [
+{
+id:'2.1.1',title:'约束及其分类',page:37,group:'约束',model:'pend',scene:'定长摆的几何约束',intro:'转动摆杆，观察摆球的可达位置。两个坐标怎样被一根杆联系起来？',
+steps:[['选定参考系','令铰点为原点，x 向右、y 向上。质点原可在平面内任意移动。','r = (x, y)'],['写出杆长不变','刚性细杆的两端始终相距 ℓ。允许位置构成一个圆。','x² + y² = ℓ²'],['判断约束类型','关系只含位置，且没有显含时间，是完整、定常的几何约束。若 ℓ 随给定时间改变，该约束便是非定常的。若速度限制无法积分成位置关系，则属于非完整约束。','x = ℓ sin θ，y = −ℓ cos θ']],
+qs:[['刚性定长杆连接平面质点和固定铰点，摆球允许的位置构成什么？',['圆周','圆盘内部','竖直直线'],0,'定长要求到铰点的距离始终等于杆长。'],['若杆长由电机给定为 ℓ(t)，这个位置约束属于哪一类？',['定常完整','非定常完整','只限制加速度'],1,'它仍可写成位置与时间的等式，其中显含时间。'],['杆长 5 m，摆球位于铰点下方且 x = 3 m。以向上为 y 正向，求 y（m）。',null,-4,'由 y² = 25 − 9 = 16，下半圆对应负根。'],['细绳可松弛，长 ℓ。用 r 表示球到悬点的距离，哪个条件覆盖所有允许位置？',['r ≥ ℓ','r = ℓ','r ≤ ℓ'],2,'绷紧时取等号，松弛时两端距离可小于绳长。']]
+},{
+id:'2.1.2',title:'约束力',page:41,group:'约束',model:'normal',scene:'斜面的法向支持力',intro:'改变倾角和质量，观察重力的法向分量，以及光滑斜面如何限制滑块的运动。',
+steps:[['确定受力','滑块贴着固定光滑斜面滑动，只受重力与垂直接触面的支持力。','F = mg + N（矢量相加）'],['沿法向投影','取离开斜面的方向为正。沿直斜面的法向加速度为零。','N − mg cos α = 0'],['消去支持力','沿斜面向下取正，支持力在这个方向没有分量。','N = mg cos α，a = g sin α']],
+qs:[['光滑平面给接触滑块的力指向何处？',['沿运动方向','垂直接触面','竖直向上'],1,'光滑接触没有切向摩擦，支持力沿法向。'],['斜面倾角增大，质量一定且滑块保持接触，法向力如何变化？',['增大','不变','减小'],2,'N = mg cos α，锐角范围内余弦随角度增大而减小。'],['m = 2 kg，g = 10 m/s²，斜面倾角 60°，求 N（N）。',null,10,'法向投影给出 N = 2 × 10 × cos 60° = 10 N。'],['若斜面沿自身法向加速，滑块仍贴面运动，旧公式需要重新检查哪一步？',['法向加速度为零','重力沿竖直向下','光滑面无摩擦'],0,'滑块跟随移动斜面取得法向加速度，应写 N − mg cos α = maₙ。']]
+},{
+id:'2.1.3',title:'约束使问题复杂',page:41,group:'约束',model:'pulley',scene:'两物体与同一根绳',intro:'调节一端重物的位置。绳长会把两个坐标联系起来，而绳张力又把两个受力方程联系起来。',
+steps:[['分别选坐标','定滑轮两侧以向下为正；忽略绳的质量和伸长，以及滑轮的质量和摩擦。','y₁ + y₂ = 常量'],['分别写动力学方程','对理想定滑轮，两端绳张力大小相等。此时未知量是两个加速度与一个张力。','m₁a₁ = m₁g − T，m₂a₂ = m₂g − T'],['补上几何关系','绳长关系对时间求导两次，给出第三个方程。代入消去张力。','a₂ = −a₁，a₁ = (m₁ − m₂)g / (m₁ + m₂)']],
+qs:[['轻绳跨过理想定滑轮、两端各挂一物。分别列牛顿方程时，哪个内部联系量同时出现？',['空气阻力','支持面倾角','绳张力'],2,'绳对两端物体都施加张力，理想条件下张力大小相同。'],['两侧坐标均向下为正，若左端下降 3 cm，右端位移为多少 cm？',null,-3,'总绳长不变，Δy₂ = −Δy₁。'],['左端 3 kg，右端 2 kg，取 g = 10 m/s²。左端向下加速度为多少 m/s²？',null,2,'a₁ = (3 − 2) × 10 / (3 + 2) = 2。'],['取左端坐标作为唯一广义坐标，两端张力在相容虚位移上的总虚功怎样？',['相消为零','总为正','等于两倍左端张力的虚功'],0,'两张力都向上，两个向下坐标的变分互为相反数，故 −T(δy₁ + δy₂) = 0。']]
+},{
+id:'2.2',title:'自由度与广义坐标',page:44,group:'自由度与广义坐标',model:'pend',scene:'用一个角描述平面单摆',intro:'试着只改变摆角。给定杆长后，每个角度都对应唯一的一对平面坐标。',
+steps:[['数出原始坐标','平面内的一个点原先需要两个笛卡儿坐标。','N = 2'],['扣除独立约束','一个独立完整约束使两个坐标不能任意选取。对正则完整系统，在局部做此计数。','s = N − k = 2 − 1 = 1'],['选取独立变量','角度 q = θ 可在局部描述圆周上的所有位形，广义坐标的量纲也可以是角度。','r(θ) = (ℓ sin θ, −ℓ cos θ)']],
+qs:[['定长平面单摆需要几个独立坐标？',null,1,'两个平面坐标减去一个独立杆长约束，得到一个自由度。'],['平面双摆的两杆长度固定，两个摆角可独立变化。哪组量可作广义坐标？',['两个固定杆长','两个摆角','重力和时间'],1,'两个摆角给出两根杆的取向，进而确定两个质点的位置。'],['空间中两个质点由一根定长刚杆连接，无其他约束。自由度是多少？',null,5,'两个空间点共有六个坐标，减去一个独立距离约束。'],['已有 x² + y² = ℓ²，再写 2x² + 2y² = 2ℓ²。自由度是否再少一个？',['是，多了一个方程','取决于单位','否，两式相关'],2,'只有独立关系才能再消去一个坐标。']]
+},{
+id:'2.3.1',title:'虚位移',page:47,group:'虚功原理 · 达朗贝尔原理',model:'virtual',scene:'沿圆周切线的虚位移',intro:'改变摆角与虚转角，观察切向箭头。虚位移是在同一时刻比较相邻允许位形得到的一阶变化。',
+steps:[['冻结时间','对可能随时间变化的约束，想象把机构固定在当前时刻。','δt = 0'],['对位置作变分','定长杆的约束在允许变分下仍须成立；除去共同因子 2。','x δx + y δy = 0'],['读出切向方向','用角度参数对位置求导。δθ 以弧度计，δθ 改号则箭头反向。','δr = (ℓ cos θ, ℓ sin θ) δθ']],
+qs:[['构造虚位移时，时间参数怎样处理？',['固定','前进一个周期','随实际速度决定'],0,'虚位移比较同一时刻与约束相容的相邻位形。'],['固定圆轨道上某点的非零虚位移位于什么方向？',['沿半径','沿切线','沿重力'],1,'r · δr = 0，允许的无穷小位移垂直于半径。'],['ℓ = 2 m，δθ = 0.03 rad，求虚位移的大小（m，一阶近似）。',null,0.06,'|δr| = ℓ |δθ| = 0.06 m。'],['水平导轨作竖直平移，约束 y = h(t)。对导轨上的质点，哪个关系成立？',['δy = ḣ dt','dy 总为 0','δy = 0，dy = ḣ dt'],2,'变分时冻结导轨高度，实际位移则包含导轨随时间的移动。']]
+},{
+id:'2.3.2',title:'理想约束　虚功原理',page:48,group:'虚功原理 · 达朗贝尔原理',model:'work',scene:'沿斜面投影的虚功',intro:'支持力可以很大。沿斜面作一个允许的虚位移，看看支持力对这个位移的投影。',
+steps:[['列出允许方向','固定光滑斜面只允许接触质点沿面发生虚位移，以沿面向下为 δs 的正向。','δr = eₛ δs'],['投影约束力','支持力沿法向，故其与切向虚位移的点积为零。对理想约束，一般要求各约束力总虚功为零。','δWᴺ = N · δr = 0'],['判断平衡','理想双面约束下，平衡要求主动总虚功对所有允许虚位移为零。若施加沿面向上的力 P，可令滑块平衡。','δW = (mg sin α − P) δs = 0']],
+qs:[['理想约束的一般定义要求哪一个量为零？',['每个约束力大小','约束力的总虚功','每个质点速度'],1,'理想性是对一切相容虚位移的约束力虚功求和。'],['固定光滑斜面的支持力为 12 N，沿面虚移 0.1 m，支持力虚功为多少 J？',null,0,'支持力与位移正交，点积为零。'],['2 kg 物块在 30° 光滑斜面上，g = 10 m/s²。使其平衡的沿面向上拉力为多少 N？',null,10,'平衡时 P = mg sin 30° = 10 N。'],['一根理想轻绳一端固定，向下绕过承重的动滑轮，再经定滑轮引出自由端。动滑轮向下虚移 0.03 m，自由端的向下虚位移为多少 m？',null,-0.06,'动滑轮由两段绳支承，每段都增长 0.03 m。定长条件是 2δy动 + δy自由 = 0，所以自由端向上虚移 0.06 m。']]
+},{
+id:'2.3.3',title:'广义坐标下的虚功原理',page:51,group:'虚功原理 · 达朗贝尔原理',model:'torque',scene:'重力沿摆角的广义力',intro:'摆球所受的重力始终向下，但它对摆角的广义力会随角度变号。',
+steps:[['沿广义坐标变化','固定时间，只改变第 j 个广义坐标，将各质点的位置变化写成偏导数的线性组合。','δrᵢ = Σⱼ (∂rᵢ/∂qⱼ) δqⱼ'],['收集虚功的系数','把各主动作用力与虚位移点乘再相加，δqⱼ 的系数定义为广义力。','δW = Σⱼ Qⱼ δqⱼ，Qⱼ = Σᵢ Fᵢ · ∂rᵢ/∂qⱼ'],['用于摆角','以从竖直向下偏向右侧为 θ 正向。重力产生回复力矩。任意独立虚位移下平衡时，各 Qⱼ 为零。','Qθ = −mgℓ sin θ']],
+qs:[['在 δW = Qθ δθ 中，若 θ 为摆角，Qθ 的通常单位是什么？',['N','N·m','m/s'],1,'角度以弧度表示，其共轭广义力为力矩。'],['一维坐标 q = x，恒力 5 N 沿 x 正向。Qₓ 为多少 N？',null,5,'δW = 5 δx，δx 的系数为 5。'],['m = 1 kg，ℓ = 2 m，θ = 30°，g = 10 m/s²。重力的 Qθ 为多少 N·m？',null,-10,'Qθ = −mgℓ sin θ = −1 × 10 × 2 × 0.5。'],['若重新选择 q = 2x，同一正向恒力 F 对 q 的广义力是多少？',['2F','F','F/2'],2,'δx = δq/2，令 F δx = Q δq 得 Q = F/2。']]
+},{
+id:'2.3.4',title:'主动力全是保守力的系统的平衡方程',page:53,group:'虚功原理 · 达朗贝尔原理',model:'potential',scene:'在势能曲线上寻找平衡',intro:'沿曲线移动摆角，比较势能的斜率与回复力矩。水平切线对应哪些摆的位置？',
+steps:[['选势能零点','把摆的最低点选作零势能，抬高的竖直距离决定重力势能。','V(θ) = mgℓ (1 − cos θ)'],['从虚功识别广义力','对保守力，主动虚功是势能变分的负值。','δW = −δV，Qθ = −∂V/∂θ'],['检查驻点附近','斜率为零给出平衡。对本例，二阶导数为正是极小，为负是极大。','V′ = mgℓ sin θ，V″ = mgℓ cos θ']],
+qs:[['保守广义力与势能的关系是哪一个？',['Q = V','Q = ∂V/∂q','Q = −∂V/∂q'],2,'主动虚功等于势能减少量，比较 δq 的系数得到负号。'],['V(x) = 3x²（SI），在 x = 2 m 处力是多少 N？',null,-12,'对 x 求导得 6x，取负号得 −12 N。'],['刚杆单摆的最高点 θ = π 是什么状态？',['不稳定平衡','稳定平衡','非平衡'],0,'此处 V′ = 0 而 V″ < 0；稍偏离会向势能更低处运动。'],['若某点 V′ = V″ = 0，能否仅凭这两项断定稳定？',['是，稳定','需考察附近势能形状','是，不稳定'],1,'例如 x⁴ 与 −x⁴ 在原点的一、二阶导数均为零，但极值类型相反。']]
+},{
+id:'2.3.5',title:'约束力的求解——拉格朗日乘子法',page:54,group:'虚功原理 · 达朗贝尔原理',model:'lambda',scene:'由约束梯度找回支持力',intro:'光滑直轨限制了法向位移。保留约束方程，就能用乘子算出静力平衡所需的支持力。',
+steps:[['保留冗余坐标','用水平 x 和竖直 y 描述斜轨，沿斜面向上的外拉力平衡重力切向分量。取单位法向 n。','f = −x sin α + y cos α = 0，∇f = n'],['引入乘子','采用 R = λ∇f 的约定，把法向约束力加入静力平衡式。','F主动 + λ∇f = 0'],['沿法向投影','外拉力沿轨道，法向上只剩重力投影与支持力。只有这里的梯度是单位向量时，λ 才直接给出有向法向力。','−mg cos α + λ = 0，R = λn']],
+qs:[['对于光滑曲线 f(x,y)=0，理想约束力平行哪个向量（∇f ≠ 0）？',['曲线切向量','∇f','任意水平向量'],1,'梯度垂直于等值线，给出约束法向。'],['水平支承面 f = y = 0，R = λ∇f，质量 3 kg，仅重力和支持力，g = 10 m/s²。λ 为多少 N？',null,30,'竖直方向 −30 + λ = 0。'],['若把约束改写为 f̃ = 2f，并保持 R = λ̃∇f̃，新的 λ̃ 是多少？',['λ/2','2λ','λ'],0,'实际约束力不变，梯度乘以 2 后其系数应除以 2。'],['若用广义坐标先消去了所有理想约束力，现在需要求支承反力，可以怎样做？',['把所有广义力再求一次和','令反力恒为零','恢复相关约束，用乘子或受力平衡求反力'],2,'消元后的方程求允许运动，反力需要相关约束的附加信息。']]
+},{
+id:'2.3.6',title:'达朗贝尔原理',page:57,group:'虚功原理 · 达朗贝尔原理',model:'dalam',scene:'惯性力与沿面动力学',intro:'让滑块在光滑斜面上自由下滑。把 −ma 加入虚功式，观察切向贡献怎样相消。',
+steps:[['从牛顿方程移项','在惯性参考系，把质量与加速度的乘积移到受力一侧。','F主动 + R − ma = 0'],['投影到虚位移','对质点逐一作点积并求和，理想约束使反力的总虚功为零。','Σᵢ (Fᵢ − mᵢaᵢ) · δrᵢ = 0'],['沿斜面取坐标','沿斜面向下为正，任意允许 δs 的系数为零，得到加速度。','(mg sin α − ma) δs = 0，a = g sin α']],
+qs:[['达朗贝尔原理写作 Σ(Fᵢ + F惯ᵢ)·δrᵢ = 0，F惯ᵢ 为何？',['mᵢvᵢ','mᵢaᵢ','−mᵢaᵢ'],2,'从牛顿方程左移 ma，惯性项带负号。'],['g = 10 m/s²，光滑斜面倾角 30°。滑块沿面向下的加速度为多少 m/s²？',null,5,'主动重力的切向分量为 mg sin 30°，除以 m 得 5。'],['2 kg 物块沿正向以 3 m/s² 加速，取 δs = +0.1 m。惯性项的虚功为多少 J？',null,-0.6,'−ma δs = −2 × 3 × 0.1 = −0.6 J。'],['运动中的质点满足达朗贝尔原理时，可得出什么结论？',['质点速度恒定','主动作用力与惯性项的总虚功对允许虚位移为零','所有真实力抵消'],1,'加速度已被写入虚功式，所以该原理同样描述加速运动。']]
+}
+];
+
+const chapterThree = [
+  {
+    id:'3.1.1', title:'坐标变换关系与拉格朗日关系', page:60, group:'拉格朗日方程', model:'drive',
+    scene:'水平移动悬点的单摆', intro:'在定长摆的几何约束上加一个随时间移动的悬点，比较真实速度与虚位移。',
+    steps:[
+      ['写出位置','取水平向右、竖直向上。悬点水平坐标为 X(t)，摆角从竖直向下向右量起。','x = X(t) + ℓ sin θ，y = −ℓ cos θ'],
+      ['分别取时间导数和偏导','真实速度含悬点速度，虚位移固定时刻，只改变 θ。','ẋ = Ẋ + ℓ cos θ·θ̇，δx = ℓ cos θ·δθ'],
+      ['比较系数','对 θ̇ 求偏导时固定 θ 与 t，悬点速度项消失。对 y 同理。','∂ṙ/∂θ̇ = ∂r/∂θ']
+    ],
+    qs:[
+      ['为什么 δx 不含 Ẋ？',['虚位移在固定时刻比较允许的构形','悬点加速度一定为零','真实速度也不含 Ẋ'],0,'δt = 0，因此给定的 X(t) 不变。'],
+      ['ℓ = 2 m，θ = 60°，Ẋ = 3 m/s，θ̇ = −2 rad/s。求 ẋ（m/s）和 ∂ẋ/∂θ̇（m）。',null,[1,1],'ℓ cos θ = 1 m。真实水平速度 ẋ = 3 + 1×(−2) = 1 m/s，系数仍为 1 m。',{fields:['水平速度 ẋ（m/s）','偏导 ∂ẋ/∂θ̇（m）'],hint:'先写出含悬点速度的 ẋ，再固定 θ 和 t 对 θ̇ 求偏导。'}]
+    ]
+  },
+  {
+    id:'3.1.2', title:'拉格朗日方程', page:61, group:'拉格朗日方程', model:'drive',
+    scene:'加速悬点如何驱动摆角', intro:'用动能和广义力列方程。悬点的平动会在动能中产生交叉项。',
+    steps:[
+      ['写出完整动能','两项速度平方相加，正弦和余弦的平方和为一。','T = ½m(Ẋ² + 2Ẋℓ cos θ·θ̇ + ℓ²θ̇²)'],
+      ['分别求导','d(∂T/∂θ̇)/dt 与 ∂T/∂θ 都含速度交叉项的 θ 导数，它们在作差时抵消。','d(∂T/∂θ̇)/dt − ∂T/∂θ = mℓ²θ̈ + mℓẌ cos θ'],
+      ['代入主动广义力','重力在 δr 的切向分量给出广义力。定长杆的理想约束力方向沿杆，总虚功为零。','θ̈ = −(g sin θ + Ẍ cos θ)/ℓ']
+    ],
+    qs:[
+      ['若悬点以恒定速度向右移动，摆角方程与悬点静止时相比如何？',['相同','多出恒定角加速度','与悬点速度成正比'],0,'平移速度出现在动能中，但作差后只剩悬点加速度。'],
+      ['m = 2 kg，ℓ = 2 m，g = 10 m/s²，悬点向右加速度 4 m/s²。摆杆经过竖直向下位置时，求 θ̈ 和惯性系中摆球水平加速度。',null,[-2,0],'在 θ = 0，θ̈ = −Ẍ/ℓ = −2 rad/s²。ẍ = Ẍ + ℓ cos θ·θ̈ − ℓ sin θ·θ̇² = 4 − 4 = 0。',{fields:['角加速度（rad/s²）','摆球水平加速度（m/s²）'],hint:'先求 θ̈，再对 x = X + ℓ sin θ 求两次时间导数。'}]
+    ]
+  },
+  {
+    id:'3.1.3', title:'保守系统的拉格朗日方程', page:64, group:'拉格朗日方程', model:'bead',
+    scene:'旋转直槽内的弹簧滑珠', intro:'水平直槽被电机维持在恒定角速度。用滑珠到转轴的距离 r 作广义坐标。',
+    steps:[
+      ['写出速度的两个分量','无摩擦滑珠沿槽移动。它随槽转动，速度同时有径向与切向分量。','v² = ṙ² + Ω²r²'],
+      ['写拉格朗日量','弹簧刚度为 k，原长为 r₀，忽略重力势能常数项。','L = ½m(ṙ² + Ω²r²) − ½k(r − r₀)²'],
+      ['列式并判稳定','平衡时 r̈ = 0。在平衡点附近代入 r = rₑ + ε，观察恢复项的符号。','m r̈ = mΩ²r − k(r − r₀)，m ε̈ = −(k − mΩ²)ε']
+    ],
+    qs:[
+      ['在 ∂L/∂r 中，哪一项来自切向速度？',['mΩ²r','mṙ','−k(r−r₀)'],0,'保持 ṙ 不变，对 ½mΩ²r² 求 r 的偏导。'],
+      ['m = 2 kg，k = 10 N/m，r₀ = 0.60 m，Ω = 1 rad/s。求平衡半径和小振动角频率的平方。',null,[0.75,4],'有效刚度 k−mΩ² = 8 N/m，因此 rₑ = kr₀/8 = 0.75 m，ω² = 8/2 = 4 s⁻²。',{fields:['平衡半径（m）','角频率平方（s⁻²）'],hint:'把右侧收集成 kr₀ − (k−mΩ²)r。'}]
+    ]
+  },
+  {
+    id:'3.2.1', title:'可遗坐标与广义动量积分', page:69, group:'运动积分 · 诺特定理', model:'polar',
+    scene:'平面极坐标下的质点', intro:'用极坐标 (r, φ) 描述质量固定的质点。径向势能 V(r) 与方位角无关。',
+    steps:[
+      ['写出拉格朗日量','极坐标下的切向速度为 rφ̇，动能必须保留 r²。','L = ½m(ṙ² + r²φ̇²) − V(r)'],
+      ['找可遗坐标','L 对 φ 的偏导为零，φ 对应的广义动量在运动中恒定。','pφ = mr²φ̇ = J'],
+      ['用守恒量消去角速度','应先写出径向方程，再把 φ̇ = J/(mr²) 代入。','m r̈ = J²/(mr³) − V′(r)']
+    ],
+    qs:[
+      ['为什么 r 改变时 φ̇ 通常会改变？',['守恒的是 mr²φ̇','守恒的是 rφ̇','只要 φ 可遗，φ̇ 恒定'],0,'广义动量同时依赖 r 与 φ̇。'],
+      ['m = 2 kg，V(r) = kr²/2，k = 2 N/m。某时刻 r = 2 m，φ̇ = 1 rad/s。到达 r = 1 m 时，求 φ̇ 与 r̈。',null,[4,15],'J = 2×2²×1 = 8。r = 1 时 φ̇ = 8/2 = 4，r̈ = rφ̇² − kr/m = 16 − 1 = 15。',{fields:['角速度（rad/s）','径向加速度（m/s²）'],hint:'角动量守恒先给出新角速度，再列径向方程。'}]
+    ]
+  },
+  {
+    id:'3.2.2', title:'广义能量积分', page:70, group:'运动积分 · 诺特定理', model:'bead',
+    scene:'匀速旋转槽中的能量交换', intro:'比较拉格朗日量不显含时间时的广义能量积分与滑珠的机械能。',
+    steps:[
+      ['先算广义动量','匀速转动已写入运动约束，独立坐标只有 r。','pᵣ = mṙ'],
+      ['构造能量函数','由于 Ω 恒定，L 不显含时间。能量函数以独立广义速度 ṙ 构造。','Eᴸ = ṙpᵣ − L = ½mṙ² + V(r) − ½mΩ²r²'],
+      ['比较惯性系机械能','滑珠机械能包含正的切向动能。转槽的约束力可沿切向做真实功，电机可以交换能量。','Eₘ = Eᴸ + mΩ²r²']
+    ],
+    qs:[
+      ['当滑珠向外运动时，若 Ω 恒定且非零，机械能怎样变化？',['增加','不变','减少'],0,'广义能量守恒而 mΩ²r² 增加。'],
+      ['在 m = 1 kg、Ω = 2 rad/s 的匀速旋转槽中，滑珠从 r = 0.50 m 向外到达 r = 1.50 m。取径向势能为零。求径向动能增量与机械能增量。',null,[4,8],'Δ(r²) = 2 m²。广义能量守恒给出 ΔTᵣ = ½mΩ²Δ(r²) = 4 J，机械能再加切向动能增量 4 J。',{fields:['径向动能增量（J）','机械能增量（J）'],hint:'分别写出 Eᴸ 和 Eₘ，留意切向动能前的符号。'}]
+    ]
+  },
+  {
+    id:'3.2.3', title:'诺特定理', page:77, group:'运动积分 · 诺特定理', model:'polar',
+    scene:'旋转对称与角动量守恒', intro:'对整个轨道做同样的小旋转。若作用量保持不变，运动中就有对应的守恒量。',
+    steps:[
+      ['选连续变换','平面转角增加同一个常数 ε。径向势只依赖 r，极坐标下的动能也保持不变。','δr = 0，δφ = ε，δL = 0'],
+      ['提取守恒量','沿运动方程，δL = d(Σ pᵢδqᵢ)/dt。除以 ε，旋转对称对应角动量守恒。','J = pφ = mr²φ̇'],
+      ['识别准对称','若固定时间的变换使 δL = ε dB/dt，则守恒量多出一个边界项。自由质点的伽利略推进 δx = εt 对应 B = mx。','I = Σ pᵢδqᵢ/ε − B；自由粒子 I = tpₓ − mx']
+    ],
+    qs:[
+      ['若在中心势上加入 V₁ = κx（κ ≠ 0），绕原点的连续旋转对称一般会怎样？',['被破坏','保持','变为时间平移'],0,'旋转后 x 一般改变，附加势能随方向变化。'],
+      ['自由质点 m = 2 kg，t = 3 s 时 x = 11 m、ẋ = 4 m/s。按 I = tpₓ − mx 的约定，求诺特守恒量 I 与 x(0)。',null,[2,-1],'pₓ = 8，I = 3×8−2×11 = 2。t = 0 时 I = −mx(0)，所以 x(0) = −1 m。',{fields:['I（kg·m）','初始位置（m）'],hint:'推进变换的边界项是 mx；代入 t = 0 后，I 只剩位置项。'}]
+    ]
+  },
+  {
+    id:'3.3', title:'非完整系统的动力学', page:80, group:'带星号的拓展', model:'blade',
+    scene:'冰刀可沿刀身滑动', intro:'用平面冰刀观察速度约束。刀尖朝向可以改变，但瞬时侧向速度为零。',
+    steps:[
+      ['写方向向量','设质点位于刀架上，刀身与 x 轴夹角为 θ。','e∥ = (cos θ, sin θ)，e⊥ = (−sin θ, cos θ)'],
+      ['写速度约束与虚位移约束','这个理想线性速度约束限制瞬时横向速度，也限制允许的虚位移。θ 可变，因此随时间积分不能给出一个固定的位置曲线。','−sin θ·ẋ + cos θ·ẏ = 0，−sin θ·δx + cos θ·δy = 0'],
+      ['求法向约束力','设无水平主动力，质点以速率 u 沿刀身滑动。对 v = u e∥ 求导并投影。','u̇ = 0，F⊥ = muθ̇']
+    ],
+    qs:[
+      ['冰刀朝向转过一个非零角度后，瞬时允许的虚位移方向怎样变化？',['随刀身转动','仍与初始刀身平行','可任意选择方向'],0,'理想约束限制的是当前刀身的横向分量。'],
+      ['质量 m = 2 kg，滑速 u = 3 m/s，刀身以 θ̇ = −0.50 rad/s 转向。忽略水平主动力，求沿 e⊥ 的约束力与瞬时约束功率。',null,[-3,0],'F⊥ = muθ̇ = −3 N。约束力与速度垂直，所以功率为零。',{fields:['有符号的侧向力（N）','约束功率（W）'],hint:'速度方向转动需要加速度，即使速率恒定也是如此。'}]
+    ]
+  },
+  {
+    id:'3.4', title:'拉格朗日力学的推广', page:86, group:'带星号的拓展', model:'magnetic',
+    scene:'均匀磁场中的速度相关力', intro:'以洛伦兹力为例，观察如何用依赖速度的广义势描述广义力。',
+    steps:[
+      ['选取广义势','令匀强磁场 B 沿 +z，取一组矢势 A = (0, Bx, 0)，只考虑磁力。','U(x, ẏ) = −eBxẏ；L = T − U'],
+      ['从 U 计算广义力','速度相关的势需同时保留位置偏导和速度偏导的时间导数。','Qᵢ = −∂U/∂qᵢ + d(∂U/∂q̇ᵢ)/dt'],
+      ['核对力和功率','代入 x、y 分量即可验证，磁力使速度转向，瞬时功率为零。','Qₓ = eBẏ，Qᵧ = −eBẋ，Q·v = 0']
+    ],
+    qs:[
+      ['在这里，如果只用 Qᵢ = −∂U/∂qᵢ，会漏掉什么？',['Qᵧ = −eBẋ','Qₓ = eBẏ','两个分量都不会漏'],0,'U 不显含 y，但 d(∂U/∂ẏ)/dt = −eBẋ。'],
+      ['取 eB = 2 N·s/m，m = 2 kg，ẋ = 3 m/s，ẏ = −4 m/s。求 aₓ、aᵧ 与磁力瞬时功率。',null,[-4,-3,0],'Qₓ = −8 N，Qᵧ = −6 N。除以质量得两个加速度；功率为 (−8)×3 + (−6)×(−4) = 0。',{fields:['aₓ（m/s²）','aᵧ（m/s²）','瞬时功率（W）'],hint:'先算两个力分量，再和速度做点积。'}]
+    ]
+  }
+];
+
+const chapterTwoChallenges = {
+  '2.1.3': ['复合滑轮：一根轻绳左端固定在天花板，经动滑轮下方，再经天花板上的定滑轮，右端挂 4 kg 重物 A。动滑轮和下方物体 B 总质量 6 kg。设竖直向下均为正，绳绷紧，g = 10 m/s²。求 a_A、a_B 与绳张力 T。',null,[20/11,-10/11,360/11],'绳长给出 a_A + 2a_B = 0。A 的方程是 4a_A = 40 − T，B 的方程是 6a_B = 60 − 2T。代入联立得 a_A = 20/11，a_B = −10/11，T = 360/11。',{fields:['a_A（m/s²）','a_B（m/s²）','绳张力 T（N）'],hint:'分别数一数 A 和 B 向下移动时会拉长几段绳。动滑轮受两段绳向上拉。',tolerance:0.01}],
+  '2.3.2': ['光滑斜面上的 4 kg 滑块在 30° 斜面上，与 1 kg 悬挂物用轻绳相连。绳的一段平行斜面，另一段竖直。滑块还连着沿斜面向上拉的弹簧，k = 20 N/m。g = 10 m/s²。取沿斜面向下为 q 正向。若弹簧伸长 0.20 m，求总广义力 Q；再求平衡伸长量。',null,[6,0.5],'滑块向下虚移时，悬挂物等量上移。Q = 4g sin30° − 1g − kx = 10 − 20x N。代 x = 0.20 得 6 N，令 Q = 0 得 x = 0.50 m。',{fields:['总广义力（N）','平衡伸长（m）'],hint:'用同一个 δq 表示两物体的虚位移，再相加三个主动虚功。'}],
+  '2.3.5': ['半径 2 m 的光滑圆环固定在竖直平面。质量 1 kg 的珠子经过环的最低点，速率 4 m/s。以圆心为原点、y 向上，并用 f=(x²+y²−4)/2、约束力 F_c=λ∇f 的约定。取 g=10 m/s²。求 λ 与支持力大小。',null,[-9,18],'最低点的向心加速度为 v²/R = 8 m/s²，方向向上，所以 N−10 = 8，N = 18 N。该点 ∇f = (0,−2 m)，故 λ = −9 N/m。',{fields:['乘子 λ（N/m）','支持力大小（N）'],hint:'最低点仍有非零法向加速度。先定约束力方向，再比较它与 ∇f 的方向。'}],
+  '2.3.6': ['斜面小车—滑块系统：斜面向右升高，倾角 30°，小车质量 2 kg，可在光滑水平面自由移动。质量 3 kg 的滑块沿无摩擦斜面下滑。取 X 为小车向右位移，s 为沿斜面向下相对位移，g = 10 m/s²。求 Ẍ、s̈ 与支持力的大小。',null,[30*Math.sqrt(3)/11,100/11,120*Math.sqrt(3)/11],'滑块加速度为 (Ẍ−s̈ cosα, −s̈ sinα)。对 δX、δs 分别用达朗贝尔原理得 5Ẍ−3s̈ cosα=0 和 s̈−Ẍ cosα=g sinα。联立得 s̈=100/11，Ẍ=30√3/11。沿斜面外法向投影，N=3(g cosα−Ẍ sinα)=120√3/11 N。',{fields:['小车加速度 Ẍ（m/s²）','相对加速度 s̈（m/s²）','支持力大小（N）'],hint:'两个独立虚位移给出两条方程。滑块的水平位移是 X−s cosα；求支持力时再投影到外法向。',tolerance:0.01}]
+};
+for (const lesson of lessons) {
+  if (chapterTwoChallenges[lesson.id]) lesson.qs.push(chapterTwoChallenges[lesson.id]);
+}
+lessons.push(...chapterThree);
+
+</script>
+<script>
+// All graphics are generated from the same parameters as the numerical readout.
+const deg = Math.PI / 180;
+const format = n => Math.abs(n) < 0.005 ? '0.00' : n.toFixed(2);
+const specs = {
+ angle:['摆角 θ','°',-70,70,32,1], length:['杆长 ℓ','m',0.6,1.8,1.2,0.1],
+ variation:['虚转角 δθ','rad',-0.12,0.12,0.08,0.01], mass:['质量 m','kg',1,5,2,0.1],
+ incline:['斜面倾角 α','°',5,55,28,1], height:['左端位置 y₁','m',0.4,1.6,1.2,0.02],
+ phi:['摆角 θ','°',-180,180,42,1]
+};
+specs.shift=['沿面虚位移 δs','m',-0.20,0.20,0.10,0.01];
+const knobs = {work:['incline','shift'],pend:['angle','length'],virtual:['angle','variation'],torque:['angle','mass'],potential:['phi','mass'],normal:['incline','mass'],lambda:['incline','mass'],dalam:['incline','mass'],pulley:['height']};
+function defaults(model){return Object.fromEntries(knobs[model].map(k=>[k,specs[k][4]]))}
+function modelData(l,p){
+ const t=(p.phi??p.angle??p.incline??0)*deg, L=p.length??1.2, m=p.mass??2, g=9.8, N=m*g*Math.cos(t);
+ switch(l.model){
+ case 'pend': return [['水平坐标 x',L*Math.sin(t),'m'],['竖直坐标 y',-L*Math.cos(t),'m']];
+ case 'virtual': return [['虚位移 δx',L*Math.cos(t)*p.variation,'m'],['虚位移 δy',L*Math.sin(t)*p.variation,'m']];
+ case 'torque':return [['广义力 Qθ',-m*g*L*Math.sin(t),'N·m'],['力臂 ℓ sin θ',L*Math.sin(t),'m']];
+ case 'potential':return [['势能 V',m*g*L*(1-Math.cos(t)),'J'],['广义力 Qθ',-m*g*L*Math.sin(t),'N·m']];
+ case 'pulley':return [['右端位置 y₂',2-p.height,'m'],['垂直段总长',2,'m']];
+ case 'work':return [['支持力虚功',0,'J'],['重力虚功',m*g*Math.sin(t)*p.shift,'J']];
+ case 'dalam':return [['切向加速度 a',g*Math.sin(t),'m/s²'],['惯性力切向分量',-m*g*Math.sin(t),'N']];
+ case 'lambda':return [['乘子 λ',N,'N'],['法向力 R',N,'N']];
+ default:return [['支持力 N',N,'N'],['沿面重力分量',m*g*Math.sin(t),'N']];
+ }
+}
+function drawModel(canvas,lesson,p){
+ const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;
+ const d=window.devicePixelRatio||1;canvas.width=Math.round(w*d);canvas.height=Math.round(h*d);
+ const c=canvas.getContext('2d');c.scale(d,d);
+ const factor=Math.min(w/385,h/208,1.2), W=w/factor,H=h/factor;
+ c.scale(factor,factor); const cx=W*.5,cy=H*.5;
+ const mint='#a1eed1', amber='#ffc075', pale='#e1f5ea', soft='#8eb6a8', dim='#50756a';
+ function line(x,y,a,b,color=pale,width=1.5,dash=[]){c.beginPath();c.strokeStyle=color;c.lineWidth=width;c.setLineDash(dash);c.moveTo(x,y);c.lineTo(a,b);c.stroke();c.setLineDash([])}
+ function arc(x,y,r,start,end,color,width=1.4,dash=[]){c.beginPath();c.strokeStyle=color;c.lineWidth=width;c.setLineDash(dash);c.arc(x,y,r,start,end);c.stroke();c.setLineDash([])}
+ function label(s,x,y,col=soft,size=14){c.fillStyle=col;c.font='500 '+size+'px Georgia,"Noto Sans CJK SC",serif';c.fillText(s,x,y)}
+ function circle(x,y,r,col){c.fillStyle=col;c.beginPath();c.arc(x,y,r,0,2*Math.PI);c.fill()}
+ function bob(x,y,r){const g=c.createRadialGradient(x-r*.4,y-r*.5,1,x,y,r);g.addColorStop(0,'#e3fff0');g.addColorStop(.45,'#99dfba');g.addColorStop(1,'#4a9d7e');circle(x,y,r,g);arc(x,y,r,0,2*Math.PI,mint,1.2)}
+ function arrow(x,y,a,b,col){if(Math.hypot(a-x,b-y)<1)return;line(x,y,a,b,col,2.4);const q=Math.atan2(b-y,a-x);c.fillStyle=col;c.beginPath();c.moveTo(a,b);c.lineTo(a-8*Math.cos(q-.47),b-8*Math.sin(q-.47));c.lineTo(a-8*Math.cos(q+.47),b-8*Math.sin(q+.47));c.fill()}
+ function support(x,y){line(x-26,y-3,x+26,y-3,pale,2);for(let j=-22;j<26;j+=7)line(x+j,y-4,x+j+5,y-10,soft,1);circle(x,y,4,pale)}
+ const t=(p.angle??p.phi??p.incline??0)*deg;
+ if(['pend','virtual','torque'].includes(lesson.model)){
+  const x=cx,y=18,r=(H-42)*(p.length??1.2)/1.8, bx=x+r*Math.sin(t),by=y+r*Math.cos(t);
+  arc(x,y,r,Math.PI*.10,Math.PI*.90,dim,1.4,[3,5]);line(x,y,x,y+r+18,dim,1,[4,5]);
+  line(x,y,bx,by,pale,2.6);support(x,y);label('O',x-18,y+18,pale);label('ℓ',(x+bx)/2+7,(y+by)/2+2,pale,19);
+  if(Math.abs(t)>.02)arc(x,y,35,Math.min(Math.PI/2,Math.PI/2-t),Math.max(Math.PI/2,Math.PI/2-t),amber,1.8);
+  label('θ',x+40*Math.sin(t/2)-3,y+47,amber,17);
+  if(lesson.model==='virtual'){
+   let s=p.variation*440;arrow(bx,by,bx+s*Math.cos(t),by-s*Math.sin(t),amber);label('δr',bx+s*Math.cos(t)+4,by-s*Math.sin(t)-6,amber,18)
+  }else if(lesson.model==='torque'){arrow(bx,by,bx,by+30,p.mass?amber:pale);label('mg',bx+9,by+25,amber)}
+  bob(bx,by,9);label('P',bx+13,by-5,mint,17);
+  if(lesson.model==='pend'){label('x',W-34,cy+22,soft);arrow(W-75,cy+19,W-44,cy+19,soft);arrow(W-75,cy+19,W-75,cy-12,soft);label('y',W-71,cy-10,soft)}
+ }else if(lesson.model==='pulley'){
+  const y=37, r=24, unit=(H-66)/1.65, a=p.height*unit,b=(2-p.height)*unit;
+  support(cx,10);line(cx,10,cx,y,pale);arc(cx,y,r,0,2*Math.PI,soft,2);circle(cx,y,4,mint);arc(cx,y,r,Math.PI,Math.PI*2,pale,2);
+  for(const [sg,dy,tag] of [[-1,a,'m₁'],[1,b,'m₂']]){const xx=cx+sg*r;line(xx,y,xx,y+dy,pale,2);c.fillStyle=sg<0?mint:amber;c.fillRect(xx-13,y+dy,26,22);label(tag,xx+(sg<0?-43:22),y+dy+16,sg<0?mint:amber,18)}
+  line(cx-110,y,cx-40,y,dim,1,[3,4]);arrow(cx-85,y+4,cx-85,y+35,soft);label('y₁',cx-107,y+33,soft);
+ }else if(lesson.model==='potential'){
+  const width=Math.min(W-96,490),left=cx-width/2,bottom=H-30,scale=(H-52)/(2*5*9.8*1.2);const xy=q=>[cx+width*q/(2*Math.PI), bottom-p.mass*9.8*1.2*(1-Math.cos(q))*scale];
+  arrow(left-8,bottom,left+width+14,bottom,soft);arrow(left,bottom+4,left,10,soft);label('V / J',left+6,18);label('θ',left+width+14,bottom-5);
+  c.beginPath();for(let i=0;i<=180;i++){const pos=xy(-Math.PI+i*2*Math.PI/180);if(!i)c.moveTo(...pos);else c.lineTo(...pos)}c.strokeStyle=mint;c.lineWidth=2.6;c.stroke();const [a,b]=xy(t),slope=-p.mass*9.8*1.2*Math.sin(t)*scale*2*Math.PI/width;line(a-20,b-20*slope,a+20,b+20*slope,amber,2);bob(a,b,5);label('−π',left-6,bottom+20);label('0',cx-3,bottom+20);label('π',left+width-4,bottom+20);
+ }else{
+  const span=Math.min((W-100)*.7,220,(H-80)/Math.max(Math.sin(t),.15)),dx=span*Math.cos(t),dy=span*Math.sin(t), x=cx-4,y=cy+20;
+  line(x-dx/2,y+dy/2,x+dx/2,y-dy/2,mint,2.3);line(x-dx/2,y+dy/2,x+dx/2,y+dy/2,dim,1,[4,4]);line(x+dx/2,y-dy/2,x+dx/2,y+dy/2,dim,1,[4,4]);label('α',x-dx/2+31,y+dy/2-2,amber,16);
+  c.save();c.translate(x,y);c.rotate(-t);c.fillStyle='#91d7b6';c.fillRect(-17,-22,34,21);c.strokeStyle=pale;c.strokeRect(-17,-22,34,21);c.restore();
+  const bx=x-11*Math.sin(t),by=y-11*Math.cos(t), weight=(p.mass??2)*11, n=weight*Math.cos(t);arrow(bx,by,bx-n*Math.sin(t),by-n*Math.cos(t),mint);label(lesson.model==='lambda'?'λ∇f':'N',bx-n*Math.sin(t)-22,by-n*Math.cos(t),mint);
+  arrow(bx,by,bx,by+weight,amber);label('mg',bx+5,by+weight,amber);
+  if(lesson.model==='work'){const s=p.shift*260;const a=bx-s*Math.cos(t),b=by+s*Math.sin(t);arrow(bx,by,a,b,pale);label('δs',a-10,b+16,pale)}
+  if(lesson.model==='dalam'||lesson.model==='lambda'){const s=weight*Math.sin(t);arrow(bx,by,bx+s*Math.cos(t),by-s*Math.sin(t),pale);label(lesson.model==='lambda'?'P':'−ma',bx+s*Math.cos(t)+3,by-s*Math.sin(t)-3,pale)}
+ }
+}
+
+</script>
+<script>
+const $ = s => document.querySelector(s);
+const icons={book:'<path d="M3 5c3-1.1 6-1 9 1 3-2 6-2.1 9-1v14c-3-1.1-6-1-9 1-3-2-6-2.1-9-1zM12 6v14"/>',lab:'<circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-34 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(45 12 12)"/>',list:'<path d="M8 5h12M8 12h12M8 19h12M3 5h1M3 12h1M3 19h1"/>',steps:'<path d="M3 18h5v-5h5V8h7M16 4h4v4"/>',pen:'<path d="m4 16-1 5 5-1L20 8l-4-4zM13 7l4 4"/>',reset:'<path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/>',note:'<path d="M5 3h14v18l-7-4-7 4zM9 8h6"/>',work:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/>',tune:'<path d="M3 7h5m5 0h8M3 17h11m5 0h2"/><circle cx="10.5" cy="7" r="2.5"/><circle cx="16.5" cy="17" r="2.5"/>',tick:'<path d="m4 12 5 5L20 6"/>',dot:'<circle cx="12" cy="12" r="7"/>',bulb:'<path d="M8 16c0-2-3-3-3-7a7 7 0 0 1 14 0c0 4-3 5-3 7zM9 20h6"/>'};
+function ic(k){return '<svg viewBox="0 0 24 24" class="ic" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+icons[k]+'</svg>'}
+const levels=['基础辨析','基础应用','进阶练习','综合迁移'];
+const groups=[['2.1','约束'],['2.2','自由度与广义坐标'],['2.3','虚功原理 · 达朗贝尔原理']];
+const chapters = {
+  '2': {name:'第二章', title:'达朗贝尔原理', pages:'37–59'},
+  '3': {name:'第三章', title:'拉格朗日动力学', pages:'60–89'}
+};
+const chapterOf = lesson => lesson.id.split('.')[0];
+groups.push(['3.1','拉格朗日方程'],['3.2','运动积分 · 诺特定理'],['3.3–3.4','带星号的拓展']);
+const short={'2.3.4':'保守力系统的平衡方程','2.3.5':'拉格朗日乘子法'};
+const facts={work:'光滑斜面 · m = 2.0 kg · g = 9.80 m/s² · 位移箭头已放大',pend:'铰点固定 · 杆长在每次实验中恒定',virtual:'ℓ = 1.20 m · 虚位移箭头已放大',torque:'ℓ = 1.20 m · g = 9.80 m/s²',potential:'ℓ = 1.20 m · g = 9.80 m/s²',normal:'固定光滑斜面 · g = 9.80 m/s²',lambda:'沿面外力维持平衡 · g = 9.80 m/s²',dalam:'无摩擦自由下滑 · g = 9.80 m/s²',pulley:'理想定滑轮 · 两端向下为正'};
+const guide={
+ '2.1.1':'把摆角调到 0°，再改杆长。哪一个坐标始终为零？试着用 x² + y² 检验定长条件。',
+ '2.1.2':'保持质量不变，增大倾角。法向支持力和沿面重力分量，哪一个在减小？',
+ '2.1.3':'把左端向下移 0.20 m，读出右端坐标的变化量。两个变化量相加得到多少？',
+ '2.2':'固定杆长，只选一个摆角。你还需要独立指定 x 和 y 吗？',
+ '2.3.1':'把虚转角从正调到负，比较切向箭头的方向。摆角为零时，虚位移的竖直分量是多少？',
+ '2.3.2':'把沿面虚位移由正调为负。哪一个力的虚功变号，哪一个始终为零？',
+ '2.3.3':'将摆角分别设为 +30° 和 −30°。重力的大小相同，为什么广义力变号？',
+ '2.3.4':'比较 0° 和 180° 附近的势能。两个位置的斜率都为零，稍微偏离后势能各怎样变化？',
+ '2.3.5':'固定倾角，让质量加倍。观察 λ 与支持力是否同步变化，再思考改变约束函数的倍数会怎样。',
+ '2.3.6':'改变质量并保持倾角不动。为什么惯性力变大，加速度却保持原值？'
+};
+Object.assign(specs, {
+  pivot:['悬点加速度 A','m/s²',-8,8,4,0.5],
+  omega:['转槽角速度 Ω','rad/s',0,3,1,0.1],
+  radius:['半径 r','m',0.5,2,1.4,0.1],
+  angularMomentum:['角动量 J','kg·m²/s',-6,6,4,0.2],
+  speed:['沿刀滑速 u','m/s',0,5,3,0.1],
+  turn:['转向角速度 θ̇','rad/s',-2,2,0.5,0.1],
+  vx:['水平速度 vₓ','m/s',-5,5,3,0.5],
+  vy:['竖直速度 vᵧ','m/s',-5,5,-4,0.5]
+});
+Object.assign(knobs, {
+  drive:['angle','pivot','length'], bead:['radius','omega'],
+  polar:['radius','angularMomentum'], blade:['angle','speed','turn'], magnetic:['vx','vy']
+});
+
+const addedModels = {
+  drive: {
+    note:'悬点沿水平方向移动 · g = 9.8 m/s²',
+    read(p) {
+      const t = p.angle*deg;
+      return [['∂ẋ/∂θ̇',p.length*Math.cos(t),'m'],
+        ['角加速度 θ̈',-(9.8*Math.sin(t)+p.pivot*Math.cos(t))/p.length,'rad/s²']];
+    }
+  },
+  bead: {
+    note:'m = 1 kg · k = 4 N/m · r₀ = 0.6 m · ṙ = 0 的瞬时截面',
+    read(p) {
+      const spring = 2*(p.radius-0.6)**2;
+      const tangential = 0.5*(p.radius*p.omega)**2;
+      return [['径向加速度',p.omega**2*p.radius-4*(p.radius-0.6),'m/s²'],
+        ['广义能量 Eᴸ',spring-tangential,'J'],['机械能 Eₘ',spring+tangential,'J']];
+    }
+  },
+  polar: {
+    note:'m = 1 kg · 方位示意 · 横向箭头表示有符号的切向速度',
+    read(p) {
+      return [['角速度 φ̇',p.angularMomentum/p.radius**2,'rad/s'],
+        ['切向速度',p.angularMomentum/p.radius,'m/s'],['角动量 J',p.angularMomentum,'kg·m²/s']];
+    }
+  },
+  blade: {
+    note:'m = 2 kg · 绿色为速度 · 橙色为侧向约束力',
+    read(p) {
+      return [['侧向约束力',2*p.speed*p.turn,'N'],['约束力功率',0,'W']];
+    }
+  },
+  magnetic: {
+    note:'俯视 xy 平面 · eB = 2 N·s/m · 绿色为速度 · 橙色为磁力',
+    read(p) {
+      return [['磁力 Qₓ',2*p.vy,'N'],['磁力 Qᵧ',-2*p.vx,'N'],['磁力功率',0,'W']];
+    }
+  }
+};
+
+function drawAddedModel(canvas, lesson, p) {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (!w || !h) return;
+  const density = window.devicePixelRatio || 1;
+  canvas.width = Math.round(w*density);
+  canvas.height = Math.round(h*density);
+  const c = canvas.getContext('2d');
+  const s = Math.min(w/360,h/200);
+  c.scale(density*s,density*s);
+  c.translate(w/(2*s),h/(2*s));
+  const mint = '#a1eed1', amber = '#ffc075', pale = '#e1f5ea', dim = '#729b8e';
+  function line(x,y,a,b,color=pale,thickness=2) {
+    c.strokeStyle=color;
+    c.lineWidth=thickness;
+    c.beginPath(); c.moveTo(x,y); c.lineTo(a,b); c.stroke();
+  }
+  function dot(x,y,color=mint,r=6) {
+    c.fillStyle=color;
+    c.beginPath(); c.arc(x,y,r,0,2*Math.PI); c.fill();
+  }
+  function label(text,x,y,color=pale) {
+    c.fillStyle=color; c.font='16px sans-serif'; c.fillText(text,x,y);
+  }
+  function arrow(text,x,y,dx,dy,color) {
+    if (Math.hypot(dx,dy)<2) return;
+    const a=x+dx,b=y+dy,angle=Math.atan2(dy,dx);
+    line(x,y,a,b,color,2.5);
+    line(a,b,a-8*Math.cos(angle-.5),b-8*Math.sin(angle-.5),color);
+    line(a,b,a-8*Math.cos(angle+.5),b-8*Math.sin(angle+.5),color);
+    label(text,a+5,b-5,color);
+  }
+  if (lesson.model==='drive') {
+    const t=p.angle*deg, length=p.length*70;
+    line(-119,-55,119,-55,dim);
+    line(0,-52,length*Math.sin(t),-52+length*Math.cos(t));
+    dot(0,-52,pale); dot(length*Math.sin(t),-52+length*Math.cos(t));
+    arrow('A',0,-69,p.pivot*9,0,amber);
+    label('θ',13,-20,amber);
+    return;
+  }
+  if (lesson.model==='blade') {
+    const t=p.angle*deg, x=Math.cos(t), y=-Math.sin(t);
+    line(-68*x,-68*y,68*x,68*y,pale,5); dot(0,0,pale);
+    arrow('v',0,0,17*p.speed*x,17*p.speed*y,mint);
+    arrow('F⊥',0,0,9*p.turn*p.speed*y,-9*p.turn*p.speed*x,amber);
+    return;
+  }
+  line(-135,0,135,0,dim); line(0,83,0,-83,dim);
+  label('x',142,5,dim); label('y',5,-78,dim);
+  if (lesson.model==='magnetic') {
+    dot(0,0,pale);
+    arrow('v',0,0,12*p.vx,-12*p.vy,mint);
+    arrow('F',0,0,12*p.vy,12*p.vx,amber);
+    return;
+  }
+  const r=50*p.radius;
+  dot(0,0,pale,4);
+  line(0,0,r,0,pale,lesson.model==='bead'?5:2);
+  dot(r,0); label('r',r/2,23);
+  if (lesson.model==='bead') {
+    arrow('Ωr',r,0,0,-10*p.omega*p.radius,mint);
+    const radial=addedModels.bead.read(p)[0][1];
+    arrow('aᵣ',r,0,Math.max(-55,Math.min(55,radial*8)),0,amber);
+  } else {
+    const tangential=p.angularMomentum/p.radius;
+    arrow('vφ',r,0,0,Math.max(-72,Math.min(72,-16*tangential)),mint);
+  }
+}
+
+Object.assign(facts,Object.fromEntries(Object.entries(addedModels).map(([id,model])=>[id,model.note])));
+Object.assign(guide,{
+  '3.1.1':'改变摆角和摆长，观察拉格朗日关系中的偏导。只调悬点加速度时，这个偏导会动吗？',
+  '3.1.2':'把摆角设为 0°，改变悬点加速度的方向。摆角加速度往哪边变？',
+  '3.1.3':'固定半径，逐渐提高角速度，比较径向加速度的大小和符号。',
+  '3.2.1':'保持角动量不变，把半径减半。角速度和切向速度各变成几倍？',
+  '3.2.2':'保持 Ω 不变，改变 r。比较机械能与广义能量之间的差，留意画面显示的是 ṙ = 0 的不同瞬时状态。',
+  '3.2.3':'固定 J，改变 r。比较切向速度和角速度，体会守恒量如何约束速度。',
+  '3.3':'先把转向角速度设为 0，再改成正值和负值。侧向力怎么变？功率呢？',
+  '3.4':'分别调节两个速度分量，核对磁力与速度是否始终正交。'
+});
+
+const key='liang-mechanics-ch2-v1';
+let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch{}
+let records=saved.records&&typeof saved.records==='object'?saved.records:{};
+let idx=Math.max(0,lessons.findIndex(l=>l.id===saved.section)),tab='model',view='desk',step=0,qi=0,choice=null,feedback=null,param=defaults(lessons[idx].model),mobileNav=false,observer=null,storageOK=true;
+function save(){try{localStorage.setItem(key,JSON.stringify({section:lessons[idx].id,records}))}catch{storageOK=false}}
+function idq(i=idx,j=qi){return lessons[i].id+'#'+j}
+function resolved(i){return lessons[i].qs.reduce((n,_,j)=>n+(records[idq(i,j)]?.passed?1:0),0)}
+function totalWrong(){return Object.values(records).filter(r=>r?.wrong).length}
+function stats(){
+ const chapter = chapterOf(lessons[idx]);
+ const metadata = chapters[chapter];
+ const activeLessons = lessons.filter(lesson => chapterOf(lesson) === chapter);
+ const total = activeLessons.reduce((sum,lesson) => sum + lesson.qs.length,0);
+ const n = lessons.reduce((sum,lesson,i) => sum + (chapterOf(lesson) === chapter ? resolved(i) : 0),0);
+ const percent = Math.round(100*n/total);
+ $('#chapter-name').textContent = metadata.name;
+ $('#chapter-title').textContent = metadata.title;
+ $('#chapter-pages').textContent = '第 '+metadata.pages+' 页';
+ $('#chapter-switch').innerHTML = Object.entries(chapters).map(([id,info]) =>
+   '<button type="button" class="secondary" data-chapter="'+id+'" aria-pressed="'+(id===chapter)+'">'+info.name+' · '+info.title+'</button>'
+ ).join('');
+ document.querySelectorAll('[data-chapter]').forEach(button => {
+   button.onclick = () => selectLesson(lessons.findIndex(lesson => chapterOf(lesson) === button.dataset.chapter));
+ });
+ $('#bar').style.width=percent+'%';$('#percent').textContent=percent+'%';$('#count').textContent=n+' / '+total+' 题已答对'+(storageOK?' · 进度保存在此浏览器':' · 浏览器暂时无法保存进度');
+ $('#desk').innerHTML=ic('work')+'学习工作台';$('#mistakes').innerHTML=ic('note')+'错题本'+(totalWrong()?' <b>'+totalWrong()+'</b>':'');
+ $('#desk').classList.toggle('current',view==='desk');$('#mistakes').classList.toggle('current',view==='errors');
+ $('#asideHead').innerHTML=ic('list')+'<strong>章节目录</strong><span>'+activeLessons.length+' 节</span><button id="toggleNav" aria-expanded="'+mobileNav+'">'+(mobileNav?'收起':'展开')+'</button>';$('#toggleNav').onclick=()=>{mobileNav=!mobileNav;stats()};
+ $('#sections').classList.toggle('expanded',mobileNav);
+ $('#sections').innerHTML=groups.filter(([prefix])=>prefix.startsWith(chapter+'.')).map(([prefix,title])=>'<div class="groupTitle"><b>§ '+prefix+'</b> '+title+'</div>'+lessons.map((l,i)=>l.group===title?'<button class="lesson '+(idx===i&&view==='desk'?'sel':'')+'" data-i="'+i+'" '+(idx===i&&view==='desk'?'aria-current="page"':'')+'><span>'+ (resolved(i)===l.qs.length?ic('tick'):'<i></i>')+'</span><div><small>'+l.id+'</small> '+(short[l.id]||l.title)+'</div></button>':'').join('')).join('');
+ document.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>selectLesson(+b.dataset.i));
+}
+function selectLesson(i,newTab='model',q=0){idx=i;tab=newTab;qi=q;step=0;choice=null;feedback=null;param=defaults(lessons[i].model);view='desk';mobileNav=false;save();render();if(window.innerWidth<=800)$('#content').scrollIntoView({block:'start'})}
+function render(){
+ if(observer)observer.disconnect();stats();if(view==='errors'){renderErrors();return}
+ const l=lessons[idx];$('#content').innerHTML='<article class="sheet"><div class="lessonHead"><div class="unitLine"><span>§ '+l.id+'</span><span class="pg">'+ic('book')+'教材第 '+l.page+' 页</span></div><h2>'+l.title+'</h2><p>'+l.intro+'</p></div><div class="tabs" aria-label="学习方式">'+[['model','lab','互动模型'],['steps','steps','逐步推导'],['quiz','pen','分级练习']].map(([v,k,t])=>'<button data-tab="'+v+'" class="'+(tab===v?'active':'')+'" aria-pressed="'+(tab===v)+'">'+ic(k)+t+'</button>').join('')+'</div><div id="pane"></div></article>';
+ document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
+ if(tab==='model')renderModel();if(tab==='steps')renderSteps();if(tab==='quiz')renderQuiz();
+}
+function renderModel(){
+ const l=lessons[idx];const draw=addedModels[l.model]?drawAddedModel:drawModel;$('#pane').innerHTML='<div class="board"><div class="boardTitle"><span class="cross">✛</span>'+l.scene+'</div><canvas aria-label="'+l.scene+'"></canvas><div class="boardFoot">'+facts[l.model]+'</div></div><div class="controls"><div class="row"><h3>'+ic('tune')+'实验参数</h3><button id="reset" class="textBtn">'+ic('reset')+'复位</button></div><div class="sliders">'+knobs[l.model].map(k=>{const [title,unit,min,max,v,step]=specs[k];return '<label><span>'+title+'<output id="o-'+k+'"></output></span><input aria-label="'+title+'" type="range" min="'+min+'" max="'+max+'" step="'+step+'" value="'+param[k]+'" data-k="'+k+'"></label>'}).join('')+'</div><div class="results" id="readout"></div></div><div class="prompt"><span>'+ic('bulb')+'观察任务</span><p>'+guide[l.id]+'</p></div>';
+ function update(){for(const k of knobs[l.model]){const [title,unit,min,max,v,step]=specs[k];$('#o-'+k).textContent=Number(param[k]).toFixed(step<0.1?2:step<1?1:0)+' '+unit;const input=document.querySelector('[data-k="'+k+'"]');input.style.setProperty('--fill',((param[k]-min)/(max-min)*100)+'%')}$('#readout').innerHTML=(addedModels[l.model]?.read(param) ?? modelData(l,param)).map(([a,b,u])=>'<div><span>'+a+'</span><strong>'+format(b)+' <small>'+u+'</small></strong></div>').join('');draw($('canvas'),l,param)}
+ document.querySelectorAll('[data-k]').forEach(s=>s.oninput=()=>{param[s.dataset.k]=+s.value;update()});$('#reset').onclick=()=>{param=defaults(l.model);for(const k of knobs[l.model])document.querySelector('[data-k="'+k+'"]').value=param[k];update()};update();
+ if(window.ResizeObserver){observer=new ResizeObserver(()=>{const c=$('canvas');if(c)draw(c,l,param)});observer.observe($('canvas'))}
+}
+function renderSteps(){
+ const l=lessons[idx];$('#pane').innerHTML='<div class="row paneTitle"><h3>从模型到方程</h3><span>第 '+(step+1)+' / '+l.steps.length+' 步</span></div>'+l.steps.slice(0,step+1).map(([t,d,f],n)=>'<section class="step"><div class="stepnum">'+(n+1)+'</div><div><h3>'+t+'</h3><p>'+d+'</p><div class="formula">'+f+'</div></div></section>').join('')+'<div class="actions"><button class="secondary" id="prev" '+(!step?'disabled':'')+'>上一步</button><button class="primary" id="next">'+(step===l.steps.length-1?'进入本节练习':'展开下一步')+'</button></div>';
+ $('#prev').onclick=()=>{step--;renderSteps()};$('#next').onclick=()=>{if(step<l.steps.length-1){step++;renderSteps()}else{tab='quiz';render()}};
+}
+function gotoQuestion(n){qi=n;choice=null;feedback=null;renderQuiz()}
+function questionLevel(question, index) {
+  return question[4]?.fields ? '综合挑战' : levels[index];
+}
+
+function nextLessonInChapter() {
+  const next = lessons[idx+1];
+  return next?.id.startsWith(chapterOf(lessons[idx]) + '.') ? idx+1 : -1;
+}
+
+function renderQuiz() {
+  const lesson = lessons[idx];
+  const entry = lesson.qs[qi];
+  const [question, options, answer, explanation, challenge] = entry;
+  const fields = challenge?.fields;
+  const correctAt = (value, target) => Math.abs(value-target) <= (challenge?.tolerance ?? 1e-6*Math.max(1,Math.abs(target)));
+  const formFields = options
+    ? '<div class="choices">' + options.map((option,i) => '<label class="option"><input type="radio" name="ans" value="'+i+'" '+(choice===i?'checked':'')+' required><span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+option+'</span></label>').join('') + '</div>'
+    : (fields ?? ['填写数值（单位见题干）']).map((field,i) =>
+        '<label class="numLabel">'+field+'<input id="answer-'+i+'" type="number" step="any" required placeholder="输入数值" inputmode="decimal"></label>'
+      ).join('');
+  $('#pane').innerHTML = '<div class="row paneTitle"><h3>本节练习</h3><span>已答对 '+resolved(idx)+' / '+lesson.qs.length+' 题</span></div>'
+    + '<div class="qnav">'+lesson.qs.map((_,i)=>'<button data-q="'+i+'" class="'+(qi===i?'on ':'')+(records[idq(idx,i)]?.passed?'done':'')+'" aria-label="第 '+(i+1)+' 题">第 '+(i+1)+' 题'+(records[idq(idx,i)]?.passed?' ✓':'')+'</button>').join('')+'</div>'
+    + '<form id="quizForm"><div class="qtags"><b>'+questionLevel(entry,qi)+'</b><span>'+(fields?'多步数值题':options?'单项选择':'数值填空')+'</span></div><h3 class="question">'+question+'</h3>'
+    + (challenge ? '<p class="answer-note">按给定单位填写数值'+(challenge.tolerance?'，非整数可四舍五入到小数点后两位':'')+'。</p><details class="quiz-hint"><summary>查看解题提示</summary><p>'+challenge.hint+'</p></details>' : '')
+    + formFields + '<div class="actions"><button type="submit" class="primary">提交答案</button>'+(feedback?'<button class="secondary" type="button" id="again">重新作答</button>':'')+'</div></form><div id="feedback" aria-live="polite"></div>';
+  if (!options && choice !== null) {
+    (Array.isArray(choice) ? choice : [choice]).forEach((value,i) => { $('#answer-'+i).value = value; });
+  }
+  if (feedback) {
+    const results = fields ? '<ol>'+fields.map((field,i) =>
+      '<li>'+field+'：'+(feedback.parts[i]?'正确':'需复算，参考值 '+Number(answer[i].toFixed(3)))+'</li>').join('')+'</ol>' : '';
+    const correction = feedback.ok || fields ? '' : '正确答案为 '+(options ? String.fromCharCode(65+answer)+'（'+options[answer]+'）' : answer)+'。';
+    const moreQuestions = qi+1 < lesson.qs.length;
+    const nextLesson = nextLessonInChapter();
+    const nextLabel = moreQuestions ? '下一题' : nextLesson >= 0 ? '学习下一节' : '查看错题本';
+    $('#feedback').innerHTML = '<div class="feedback '+(feedback.ok?'good':'bad')+'"><strong>'+(feedback.ok?'回答正确':'再看一下这一步')
+      +'</strong>'+results+'<p>'+correction+explanation+'</p>'+(feedback.ok?'':'<small>已加入错题本，重新答对此题后自动移出。</small>')
+      +'</div><div class="actions"><button id="advance" class="secondary">'+nextLabel+'</button></div>';
+    $('#again').onclick = () => gotoQuestion(qi);
+    $('#advance').onclick = () => {
+      if (moreQuestions) gotoQuestion(qi+1);
+      else if (nextLesson >= 0) selectLesson(nextLesson);
+      else showErrors();
+    };
+  }
+  document.querySelectorAll('[data-q]').forEach(button => { button.onclick = () => gotoQuestion(+button.dataset.q); });
+  $('#quizForm').onsubmit = event => {
+    event.preventDefault();
+    const values = options
+      ? [$('input[name="ans"]:checked')?.value]
+      : (fields ?? ['']).map((_,i) => $('#answer-'+i).value);
+    if (values.some(value => value == null || value === '' || !Number.isFinite(Number(value)))) return;
+    const numbers = values.map(Number);
+    const targets = fields ? answer : [answer];
+    const parts = numbers.map((value,i) => correctAt(value,targets[i]));
+    const ok = parts.every(Boolean);
+    choice = fields ? numbers : numbers[0];
+    records[idq()] = {passed:ok,wrong:!ok,last:choice};
+    feedback = {ok,parts};
+    save();
+    stats();
+    renderQuiz();
+  };
+}
+
+function lastAnswer(question, record) {
+  if (question[1]) return question[1][record.last];
+  if (Array.isArray(record.last) && question[4]?.fields) {
+    return question[4].fields.map((field,i) => field+' '+record.last[i]).join('；');
+  }
+  return record.last;
+}
+
+function showErrors(){view='errors';mobileNav=false;render();if(window.innerWidth<=800)$('#content').scrollIntoView()}
+function renderErrors(){
+ const entries=lessons.flatMap((l,i)=>l.qs.map((q,j)=>({l,i,q,j,r:records[idq(i,j)]}))).filter(x=>x.r?.wrong);
+ $('#content').innerHTML='<article class="sheet errorSheet"><div class="eyebrow">'+ic('note')+'复习记录</div><h2>错题本</h2><p>按教材顺序重做，答对后自动移出。</p>'+(entries.length?entries.map(({l,i,q,j,r})=>'<div class="errorItem"><small>§ '+l.id+' · 第 '+(j+1)+' 题 · '+questionLevel(q,j)+'</small><h3>'+q[0]+'</h3><p>上次作答　'+lastAnswer(q,r)+'</p><button class="secondary" data-retry="'+i+','+j+'">重做此题</button></div>').join(''):'<div class="empty">'+ic('tick')+'<h3>当前没有待订正的题目</h3><p>练习中答错的题会出现在这里。</p><button class="primary" id="practice">进入本节练习</button></div>')+'</article>';
+ document.querySelectorAll('[data-retry]').forEach(b=>b.onclick=()=>{const [i,j]=b.dataset.retry.split(',').map(Number);selectLesson(i,'quiz',j)});if($('#practice'))$('#practice').onclick=()=>selectLesson(idx,'quiz')
+}
+$('#desk').onclick=()=>{view='desk';render()};$('#mistakes').onclick=showErrors;$('#brand').onclick=e=>{e.preventDefault();selectLesson(0)};render();
+
+</script>
+</body></html>
